@@ -48,11 +48,13 @@ std::string	Contact::get_darkest_secret(void)
 
 void Contact::setContact(std::string a, std::string b, std::string c, std::string d, std::string e)
 {
+
     first_name = a;
     last_name = b;
     nickname = c;
     phone_number = d;
     darkest_secret = e;
+
 	std::cout << "Contact created successfully" << std::endl;
 	return ;
 }

@@ -2,7 +2,7 @@ MAKEFLAGS	+=	--quiet
 
 			# Library Name #
 NAME		=
-SOFTWARE	=	software
+PHONEBOOK	=	phonebook
 
 			# Mandatory Variables #
 SRCS			=	./*.cpp
@@ -18,20 +18,20 @@ RED			= \e[0;31m
 YELLOW		= \e[0;33m
 RESET		= \e[0m
 
-all: $(SOFTWARE)
+all: $(PHONEBOOK)
 
 $(NAME): all
 
-$(SOFTWARE): $(SRCS)
-	@ $(CC) $(CFLAG) $(SRCS) -o $(SOFTWARE)
+$(PHONEBOOK): $(SRCS)
+	@ $(CC) $(CFLAG) $(SRCS) -o $(PHONEBOOK)
 	@printf "[$(GREEN)SUCCESS$(RESET)] SOFTWARE compiled.\n"
 
 clean:
-	@ $(RM) $(SOFTWARE)
+	@ $(RM) $(PHONEBOOK)
 	@printf "[$(YELLOW)SUCCESS$(RESET)] Executable removed.\n"
 
 fclean:
-	@ $(RM) $(SOFTWARE)
+	@ $(RM) $(PHONEBOOK)
 	@printf "[$(YELLOW)SUCCESS$(RESET)] Executable removed.\n"
 
 re: fclean all

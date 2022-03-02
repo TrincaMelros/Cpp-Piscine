@@ -40,8 +40,8 @@ void Phonebook::add_contact(void)
 	int			i;
 
 	i = contacts;
-	if (i == 8)
-		i = 0;
+	if (i > 7)
+		i = i - 8;
 	std::cout << "First name: ";
 	std::getline(std::cin, First_name);
 	std::cout << "Last name: ";
@@ -52,25 +52,44 @@ void Phonebook::add_contact(void)
 	std::getline(std::cin, Phone_number);
 	std::cout << "Darkest Secret: ";
 	std::getline(std::cin, Darkest_secret);
-
-	list[i].setContact(First_name, Last_name, Nickname, Phone_number, Darkest_secret);	
+	if (First_name.empty() || Last_name.empty() || Nickname.empty() || Phone_number.empty() || Darkest_secret.empty())
+	{
+		std::cout << "Can't have empty fields" << std::endl;
+		return ;
+	}
+	else
+	{
+		list[i].setContact(First_name, Last_name, Nickname, Phone_number, Darkest_secret);
+		contacts++;
+	}
 }
 
 void	Phonebook::display_contacts(void)
 {
 	int	i;
+	int	c;
 	std::string First_name;
 	std::string Last_name;
 	std::string Nickname;
+	std::string Index;
 
 	std::cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
+	c = contacts;
+	if (c > 8)
+		c = 8;
 	i = 0;
-	while (i < contacts)
+	while (i < c)
 	{
 		First_name = change_string(list[i].get_firstname());
 		Last_name = change_string(list[i].get_lastname());
 		Nickname = change_string(list[i].get_nickname());
-		std::cout << "|" << << "|" << First_name << "|"; 
-
+		Index = std::to_string(i);
+		std::cout << "|" << "         " << Index << "|" << First_name << "|" << Last_name << "|" << Nickname << "|" << std::endl; 
+		i++;
 	}
 }
+
+void	Phonebook::display_contact(int index)
+{
+		
+}	
